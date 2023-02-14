@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { uid } from "uid";
 import Form from "./components/Form/Form";
 import List from "./components/List/List";
+import Heading from "./components/Heading/Heading";
+
+import useFetch from "./components/utils/useFetch/useFetch";
 
 
 function App() {
@@ -11,15 +14,12 @@ function App() {
   const [checked, setChecked] = useState(false);
   const [activities, setActivities] = useState(INITIAL);
 
-  const isGoodWeather = true;
+  const finalWeather = useFetch('https://example-apis.vercel.app/api/weather');
+  const weather = finalWeather.isGoodWeather;
+  
 
-  console.log(activities)
+  const filteredElements = activities.filter(entry => entry.isChecked === weather)
 
-  const filteredElements = activities.filter(entry => {
-    return  entry.isChecked === isGoodWeather
-    
-  })
-  console.log(filteredElements)
   useEffect(() => {
    
       localStorage.setItem('activities', JSON.stringify(activities))
@@ -54,17 +54,21 @@ function App() {
   return(    
 
   <>
+    <Heading
+    condition={finalWeather.condition}
+    temperature={finalWeather.temperature}
+    />
     
     <List
-    filteredElements={filteredElements}
-    isGoodWeather= {isGoodWeather}/>      
+      filteredElements={filteredElements}
+      weather= {weather}/>      
  
     <Form
-    onAddActivity={onAddActivity}
-    checked = {checked}
-    setChecked = {setChecked}
-    handleAddActivity = {handleAddActivity}
-  />
+      onAddActivity={onAddActivity}
+      checked = {checked}
+      setChecked = {setChecked}
+      handleAddActivity = {handleAddActivity}
+    />
   </>
   
   )
