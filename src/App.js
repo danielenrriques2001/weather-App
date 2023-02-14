@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { uid } from "uid";
 import Form from "./components/Form/Form";
 import List from "./components/List/List";
-import ListElement from "./components/List/ListElement/ListElement";
+
 
 function App() {
 
@@ -11,6 +11,15 @@ function App() {
   const [checked, setChecked] = useState(false);
   const [activities, setActivities] = useState(INITIAL);
 
+  const isGoodWeather = true;
+
+  console.log(activities)
+
+  const filteredElements = activities.filter(entry => {
+    return  entry.isChecked === isGoodWeather
+    
+  })
+  console.log(filteredElements)
   useEffect(() => {
    
       localStorage.setItem('activities', JSON.stringify(activities))
@@ -45,21 +54,9 @@ function App() {
   return(    
 
   <>
-    <List>
-      {
-      activities.map((activity) => {
-        return (
-         <ListElement
-         name = {activity.name}
-         key = {activity.id}
-         />
-        )
-
-      })
-
-
-      }
-    </List>
+    <List
+    filteredElements={filteredElements}/>      
+ 
     <Form
     onAddActivity={onAddActivity}
     checked = {checked}

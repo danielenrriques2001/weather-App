@@ -1,10 +1,20 @@
 import React from 'react'
+import ListElement from './ListElement/ListElement'
 
-const List = ({children}) => {
+const List = ({filteredElements}) => {
   return (
-    <ul>
-        {children}
-    </ul>
+    <>
+      { filteredElements.map((e) => {
+      return(
+        <ListElement
+        key={e.id}
+        name={e.name}
+        />
+      )
+    })
+   }
+    </>
+   
   )
 }
 
