@@ -1,6 +1,6 @@
 import React from "react";
 
-const Form = ({onAddActivity, checked, setChecked}) => {
+const Form = ({onAddActivity, checked, setChecked, handleAddActivity}) => {
 
 
   return (
