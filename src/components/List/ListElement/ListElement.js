@@ -2,9 +2,12 @@
 
 import React from 'react'
 
-const ListElement = ({name}) => {
-  return (
+const ListElement = ({name, onDeleteActivity, listId}) => {
+    return (
+    <div>
     <li>{name}</li>
+    <button onClick={() => {onDeleteActivity(listId)}} >X</button>
+    </div>
   )
 }
 

@@ -51,6 +51,15 @@ function App() {
 
   }
 
+  function handleDeleteActivity (id){
+    const deleteActivities = activities.filter((p) => {
+      return p.id !== id
+    })
+    
+    setActivities(deleteActivities);
+
+  }
+
   return(    
 
   <>
@@ -61,7 +70,9 @@ function App() {
     
     <List
       filteredElements={filteredElements}
-      weather= {weather}/>      
+      weather= {weather}
+      onDeleteActivity ={handleDeleteActivity}
+      />      
  
     <Form
       onAddActivity={onAddActivity}
