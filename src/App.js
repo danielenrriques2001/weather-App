@@ -54,8 +54,10 @@ function App() {
   return(    
 
   <>
+    
     <List
-    filteredElements={filteredElements}/>      
+    filteredElements={filteredElements}
+    isGoodWeather= {isGoodWeather}/>      
  
     <Form
     onAddActivity={onAddActivity}
