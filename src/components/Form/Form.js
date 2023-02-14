@@ -6,7 +6,7 @@ const Form = ({onAddActivity, checked, setChecked, handleAddActivity}) => {
   return (
     <>
       <form 
-      className = 'my-5 font-mono'
+      className = 'my-5 font-mono text-center'
       onSubmit={onAddActivity}>
         <h1
         className=' text-xl font-mono'
