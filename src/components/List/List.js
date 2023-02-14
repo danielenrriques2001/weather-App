@@ -1,11 +1,16 @@
 import React from 'react'
 import ListElement from './ListElement/ListElement'
+import Message from '../Message/Message'
 
-const List = ({filteredElements, isGoodWeather}) => {
+const List = ({filteredElements, weather}) => {
+
+
   return (
     <>
-      <p>{isGoodWeather === true ? "The weather is awsome! Go outside and:" : "Bad weather outside! Hers what you can do now:"}</p>
-      
+      <Message
+      weather={weather}
+      />
+
       { filteredElements.map((e) => {
       return(
         <ListElement
