@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { uid } from "uid";
+
+
 import Form from "./components/Form/Form";
 import List from "./components/List/List";
 import Heading from "./components/Heading/Heading";
@@ -62,7 +64,7 @@ function App() {
 
   return(    
 
-  <>
+  <div className="flex flex-col justify-center items-center my-5">
     <Heading
     condition={finalWeather.condition}
     temperature={finalWeather.temperature}
@@ -80,7 +82,7 @@ function App() {
       setChecked = {setChecked}
       handleAddActivity = {handleAddActivity}
     />
-  </>
+  </div>
   
   )
 }
